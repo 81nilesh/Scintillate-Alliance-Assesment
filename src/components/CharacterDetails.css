@@ -5,9 +5,18 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    text-align: center;
     margin-top: 60px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow with a slight blur */
   }
+  .card {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White box shadow */
+    box-sizing: border-box; /* Ensure padding and border are included in the box size */
+    border-radius: 8px;
+    background-color: white;
+    padding-top: 10px;
+}
+
   
   .character-details-title {
     background-color: rgb(126, 184, 241);

@@ -75,10 +75,12 @@ function CharacterDetails() {
                 <Text className="character-details-item">Birth Year: {character.birth_year}</Text> {/* Apply className */}
                 <Text className="character-details-item">Gender: {character.gender}</Text> {/* Apply className */}
                 <Text className="character-details-item">Homeworld: {homeworld?.name}</Text> {/* Apply className */}
-                <Text className="character-details-item">Films: {films.map(film => film.title).join(', ')}</Text> {/* Apply className */}
-                <Text className="character-details-item">Species: {species.map(specie => specie.name).join(', ')}</Text> {/* Apply className */}
-                <Text className="character-details-item">Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text> {/* Apply className */}
-                <Text className="character-details-item">Starships: {starships.map(starship => starship.name).join(', ')}</Text> {/* Apply className */}
+                <div className='card'>
+                    <Text className="character-details-item">Films: {films.map(film => film.title).join(', ')}</Text> {/* Apply className */}
+                    <Text className="character-details-item">Species: {species.map(specie => specie.name).join(', ')}</Text> {/* Apply className */}
+                    <Text className="character-details-item">Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text> {/* Apply className */}
+                    <Text className="character-details-item">Starships: {starships.map(starship => starship.name).join(', ')}</Text> {/* Apply className */}
+                </div>
                 <Button onClick={() => navigate('/')} mt={4} className='btn'>Go Back</Button>
             </Box>
         </>
