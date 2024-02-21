@@ -1,7 +1,7 @@
-// CharacterDetails.js
 import React, { useState, useEffect } from 'react';
-import { Box, Text } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { Box, Text, Button } from '@chakra-ui/react';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import './CharacterDetails.css'; // Import the CSS file
 
 function CharacterDetails() {
     const { id } = useParams(); // Use useParams to get the characterId from the URL
@@ -11,6 +11,7 @@ function CharacterDetails() {
     const [species, setSpecies] = useState([]);
     const [vehicles, setVehicles] = useState([]);
     const [starships, setStarships] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCharacterDetails = async () => {
@@ -62,22 +63,25 @@ function CharacterDetails() {
     }
 
     return (
-        <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>Character Details</Text>
-            <Text>Name: {character.name}</Text>
-            <Text>Height: {character.height}</Text>
-            <Text>Mass: {character.mass}</Text>
-            <Text>Hair Color: {character.hair_color}</Text>
-            <Text>Skin Color: {character.skin_color}</Text>
-            <Text>Eye Color: {character.eye_color}</Text>
-            <Text>Birth Year: {character.birth_year}</Text>
-            <Text>Gender: {character.gender}</Text>
-            <Text>Homeworld: {homeworld?.name}</Text>
-            <Text>Films: {films.map(film => film.title).join(', ')}</Text>
-            <Text>Species: {species.map(specie => specie.name).join(', ')}</Text>
-            <Text>Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text>
-            <Text>Starships: {starships.map(starship => starship.name).join(', ')}</Text>
-        </Box>
+        <>
+            <Box className="character-details-container"> {/* Apply className */}
+                <Text className="character-details-title">Character Details</Text> {/* Apply className */}
+                <Text className="character-details-item">Name: {character.name}</Text> {/* Apply className */}
+                <Text className="character-details-item">Height: {character.height}</Text> {/* Apply className */}
+                <Text className="character-details-item">Mass: {character.mass}</Text> {/* Apply className */}
+                <Text className="character-details-item">Hair Color: {character.hair_color}</Text> {/* Apply className */}
+                <Text className="character-details-item">Skin Color: {character.skin_color}</Text> {/* Apply className */}
+                <Text className="character-details-item">Eye Color: {character.eye_color}</Text> {/* Apply className */}
+                <Text className="character-details-item">Birth Year: {character.birth_year}</Text> {/* Apply className */}
+                <Text className="character-details-item">Gender: {character.gender}</Text> {/* Apply className */}
+                <Text className="character-details-item">Homeworld: {homeworld?.name}</Text> {/* Apply className */}
+                <Text className="character-details-item">Films: {films.map(film => film.title).join(', ')}</Text> {/* Apply className */}
+                <Text className="character-details-item">Species: {species.map(specie => specie.name).join(', ')}</Text> {/* Apply className */}
+                <Text className="character-details-item">Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text> {/* Apply className */}
+                <Text className="character-details-item">Starships: {starships.map(starship => starship.name).join(', ')}</Text> {/* Apply className */}
+                <Button onClick={() => navigate('/')} mt={4} className='btn'>Go Back</Button>
+            </Box>
+        </>
     );
 }
 

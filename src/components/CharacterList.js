@@ -1,13 +1,15 @@
-// CharacterList.js
+// CharactersAndFavorites.js
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import './CharacterList.css'; // Import the external CSS file
 
-function CharacterList() {
+function CharactersAndFavorites() {
     const [characters, setCharacters] = useState([]);
     const [nextPage, setNextPage] = useState(null);
     const [prevPage, setPrevPage] = useState(null);
     const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
+    const [showFavorites, setShowFavorites] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,10 +45,6 @@ function CharacterList() {
         navigate(`/character/${characterId}`);
     };
 
-    const handleShowFavorites = () => {
-        navigate('/favorites');
-    };
-
     const toggleFavorite = (character) => {
         const index = favorites.findIndex(fav => fav.url === character.url);
         if (index !== -1) {
@@ -64,24 +62,53 @@ function CharacterList() {
         return favorites.some(fav => fav.url === character.url);
     };
 
+    const handleShowFavorites = () => {
+        setShowFavorites(true);
+    };
+
+    const handleShowCharacters = () => {
+        setShowFavorites(false);
+    };
+
     return (
-        <Box>
-            <Text fontSize="xl" fontWeight="bold" mb={4}>Character List</Text>
-            <Button onClick={handleShowFavorites} mb={4}>Show Favorites</Button>
-            {characters.map(character => (
-                <Box key={character.name} borderWidth="1px" borderRadius="lg" p={4} mb={4} onClick={() => handleCharacterClick(character.url)}>
-                    <Text fontSize="lg" fontWeight="bold">{character.name}</Text>
-                    <Text>Gender: {character.gender}</Text>
-                    <Text>Height: {character.height}</Text>
-                    <Button onClick={(e) => { e.stopPropagation(); toggleFavorite(character); }}>
-                        {isFavorite(character) ? 'Remove from Favorites' : 'Add to Favorites'}
-                    </Button>
-                </Box>
-            ))}
-            <Button onClick={handlePrevPage} disabled={!prevPage} mr={2}>Previous</Button>
-            <Button onClick={handleNextPage} disabled={!nextPage}>Next</Button>
+        <Box className="character-list-container">
+            <div className="buttons-container">
+                <Button className="show-all-button" onClick={handleShowCharacters}>Show Characters</Button>
+                <Button className="favorites-button" onClick={handleShowFavorites}>Show Favorites</Button>
+            </div>
+            {showFavorites ? (
+                <>
+                    <Text className="title character-details-title" fontSize="xl" fontWeight="bold" mb={4}>Favorite Characters</Text>
+
+                    {favorites.map(favorite => (
+                        <Box key={favorite.url} className="character-card" borderWidth="1px" borderRadius="lg" p={4} mb={4} onClick={() => handleCharacterClick(favorite.url)}>
+                            <Text className="name" fontSize="lg" fontWeight="bold">{favorite.name}</Text>
+                            <Text className="info">Gender: {favorite.gender}</Text>
+                            <Text className="info">Height: {favorite.height}</Text>
+                        </Box>
+                    ))}
+                </>
+            ) : (
+                <>
+                    <Text className="title character-details-title" fontSize="xl" fontWeight="bold" mb={4}>Character List</Text>
+                    {characters.map(character => (
+                        <Box key={character.name} className="character-card" borderWidth="1px" borderRadius="lg" p={4} mb={4} onClick={() => handleCharacterClick(character.url)}>
+                            <Text className="name" fontSize="lg" fontWeight="bold">{character.name}</Text>
+                            <Text className="info">Gender: {character.gender}</Text>
+                            <Text className="info">Height: {character.height}</Text>
+                            <Button className={`favorite-button ${isFavorite(character) ? 'added' : ''}`} onClick={(e) => { e.stopPropagation(); toggleFavorite(character); }}>
+                                {isFavorite(character) ? 'Remove from Favorites' : 'Add to Favorites'}
+                            </Button>
+                        </Box>
+                    ))}
+                    <div className="pagination">
+                        <Button className="pagination-button" onClick={handlePrevPage} disabled={!prevPage} mr={2}>Previous</Button>
+                        <Button className="pagination-button" onClick={handleNextPage} disabled={!nextPage}>Next</Button>
+                    </div>
+                </>
+            )}
         </Box>
     );
 }
 
-export default CharacterList;
+export default CharactersAndFavorites;
