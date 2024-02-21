@@ -1,18 +1,21 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // Include Switch in the import statement
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CharacterList from './components/CharacterList';
 import CharacterDetails from './components/CharacterDetails';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact component={CharacterList} />
-        <Route path="/character/:id" component={CharacterDetails} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<CharacterList />} />
+        <Route path="/character/:id" element={<CharacterDetails />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+
