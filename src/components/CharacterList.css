@@ -5,6 +5,10 @@
     align-items: center;
     padding: 20px;
 }
+.popup{
+    border: 1px solid black;
+    padding: 50px;
+}
 
 #btn1 {
     background-color: green;
@@ -61,7 +65,9 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-sizing: border-box; /* Ensure padding and border are included in width calculation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
+
 
 .character-card:hover {
     background-color: #f0f0f0;

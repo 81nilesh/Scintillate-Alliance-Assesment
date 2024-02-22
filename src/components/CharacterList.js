@@ -50,10 +50,14 @@ function CharactersAndFavorites() {
             const updatedFavorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)];
             setFavorites(updatedFavorites);
             localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            // Show the alert with "Removed successfully" message
+            window.alert('Removed to favorite successfully');
         } else {
             const updatedFavorites = [...favorites, character];
             setFavorites(updatedFavorites);
             localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            // Show the alert with "Added successfully" message
+            window.alert('Added to favorite successfully');
         }
     };
 
@@ -84,6 +88,14 @@ function CharactersAndFavorites() {
                             <Text className="name" fontSize="lg" fontWeight="bold">{favorite.name}</Text>
                             <Text className="info">Gender: {favorite.gender}</Text>
                             <Text className="info">Height: {favorite.height}</Text>
+                            <Button
+                                className="favorite-button remove"
+                                onClick={(e) => { e.stopPropagation(); toggleFavorite(favorite); }}
+                                bg="red" // Set background color to red for remove button
+                                color="white" // Set text color to white for better visibility
+                            >
+                                Remove from Favorites
+                            </Button>
                         </Box>
                     ))}
                 </>
@@ -97,7 +109,6 @@ function CharactersAndFavorites() {
                             <Text className="info">Height: {character.height}</Text>
                             <Button
                                 className={`favorite-button ${isFavorite(character) ? 'added' : ''}`}
-
                                 onClick={(e) => { e.stopPropagation(); toggleFavorite(character); }}
                                 bg={isFavorite(character) ? 'red' : 'green'} // Change background color based on favorite status
                                 color="white" // Set text color to white for better visibility
