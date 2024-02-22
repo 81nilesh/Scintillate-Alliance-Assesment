@@ -1,4 +1,3 @@
-// CharactersAndFavorites.js
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
@@ -73,8 +72,8 @@ function CharactersAndFavorites() {
     return (
         <Box className="character-list-container">
             <div className="buttons-container">
-                <Button className="show-all-button" onClick={handleShowCharacters}>Show Characters</Button>
-                <Button className="favorites-button" onClick={handleShowFavorites}>Show Favorites</Button>
+                <Button className="show-all-button" id='btn2' onClick={handleShowCharacters}>Show Characters</Button>
+                <Button className="favorites-button" id='btn2' onClick={handleShowFavorites}>Show Favorites</Button>
             </div>
             {showFavorites ? (
                 <>
@@ -96,14 +95,21 @@ function CharactersAndFavorites() {
                             <Text className="name" fontSize="lg" fontWeight="bold">{character.name}</Text>
                             <Text className="info">Gender: {character.gender}</Text>
                             <Text className="info">Height: {character.height}</Text>
-                            <Button className={`favorite-button ${isFavorite(character) ? 'added' : ''}`} onClick={(e) => { e.stopPropagation(); toggleFavorite(character); }}>
+                            <Button
+                                className={`favorite-button ${isFavorite(character) ? 'added' : ''}`}
+
+                                onClick={(e) => { e.stopPropagation(); toggleFavorite(character); }}
+                                bg={isFavorite(character) ? 'red' : 'green'} // Change background color based on favorite status
+                                color="white" // Set text color to white for better visibility
+                            >
                                 {isFavorite(character) ? 'Remove from Favorites' : 'Add to Favorites'}
                             </Button>
                         </Box>
                     ))}
+
                     <div className="pagination">
-                        <Button className="pagination-button" onClick={handlePrevPage} disabled={!prevPage} mr={2}>Previous</Button>
-                        <Button className="pagination-button" onClick={handleNextPage} disabled={!nextPage}>Next</Button>
+                        <Button className="pagination-button" id='btn' onClick={handlePrevPage} disabled={!prevPage} mr={2}>Previous</Button>
+                        <Button className="pagination-button" id='btn1' onClick={handleNextPage} disabled={!nextPage}>Next</Button>
                     </div>
                 </>
             )}

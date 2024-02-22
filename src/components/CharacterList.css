@@ -6,6 +6,20 @@
     padding: 20px;
 }
 
+#btn1 {
+    background-color: green;
+    color: white;
+}
+
+#btn {
+    background-color: rgb(103, 108, 244);
+    color: white;
+}
+
+#btn2{
+    background-color: aqua;
+    color: black;
+}
 
 
 

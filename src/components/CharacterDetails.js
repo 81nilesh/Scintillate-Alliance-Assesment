@@ -65,8 +65,7 @@ function CharacterDetails() {
     return (
         <>
             <Box className="character-details-container"> {/* Apply className */}
-                <Text className="character-details-title">Character Details</Text> {/* Apply className */}
-                <Text className="character-details-item">Name: {character.name}</Text> {/* Apply className */}
+                <Text className="character-details-title">Name: {character.name}</Text> {/* Apply className */}
                 <Text className="character-details-item">Height: {character.height}</Text> {/* Apply className */}
                 <Text className="character-details-item">Mass: {character.mass}</Text> {/* Apply className */}
                 <Text className="character-details-item">Hair Color: {character.hair_color}</Text> {/* Apply className */}
