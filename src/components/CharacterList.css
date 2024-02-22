@@ -1,382 +1,288 @@
-/* CharacterList.css */
+.background-container {
+  background-image: url("https://img.freepik.com/free-vector/gradient-network-connection-background_23-2148865393.jpg?w=900&t=st=1708597156~exp=1708597756~hmac=52cfd24b3794aa8ca03df6ce3dbd1da14505784fb3d9e370b251d1f18bd11271");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
 .character-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
-.popup{
-    border: 1px solid black;
-    padding: 50px;
+.popup {
+  border: 1px solid #000;
+  padding: 50px;
 }
-
 #btn1 {
-    background-color: green;
-    color: white;
+  background-color: green;
+  color: #fff;
 }
-
 #btn {
-    background-color: rgb(103, 108, 244);
-    color: white;
+  background-color: #676cf4;
+  color: #fff;
 }
-
-#btn2{
-    background-color: aqua;
-    color: black;
+#btn2 {
+  background-color: aqua;
+  color: #000;
 }
-
-
-
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
-
 .buttons-container {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 20px;
 }
-
 .favorites-button,
 .show-all-button {
-    flex: 1;
-    margin: 0 10px;
-    background-color: green;
+  flex: 1;
+  margin: 0 10px;
+  background-color: green;
 }
-
 .character-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 }
-
 .character-card {
-    width: calc(50% - 20px); /* Adjust width to fit two boxes in one line */
-    max-width: calc(50% - 20px); /* Adjust max-width to fit two boxes in one line */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-sizing: border-box; /* Ensure padding and border are included in width calculation */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  width: calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
 .character-card:hover {
-    background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 }
-
 .name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
 }
-
 .info {
-    font-size: 14px;
-    margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: white;
 }
-
-/* CharacterList.css */
-
-.character-list-container {
-    padding: 20px;
-}
-
-.buttons-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.show-all-button,
-.favorites-button {
-    width: calc(50% - 5px); /* Adjust button width here */
-}
-
-.character-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.name {
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.info {
-    font-size: 14px;
-    text-align: center;
-}
-
-.favorite-button {
-    margin-top: 10px;
-    width: 100%; /* Make the button full-width */
-}
-
 .added {
-    background-color: red; /* Change background color for added favorite */
+  background-color: red;
 }
-
 .pagination {
-    margin-top: 20px;
+  margin-top: 10px;
 }
-
 .pagination-button {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-
-
 .favorite-button {
-    width: 100%;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-
 .button-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
-
 .button-container button {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-
 .button-container button:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
-
 .favorite-button.added {
-    background-color: #ffcccc;
+  background-color: #ffcccc;
 }
-
 .pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .pagination-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
 }
-
 .pagination-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
-
-.pagination-button:hover:not(:disabled) {
-    background-color: #f0f0f0;
+.pagination-button:hover {
+    transform: scale(0.9);
 }
-
-
-/* CharacterList.css */
-
-/* Define the green color for the "Add to Favorites" button */
 .add-to-favorites-button {
-    background-color: #27ae60;
-    color: #fff;
+  background-color: #27ae60;
+  color: #fff;
 }
-
 .add-to-favorites-button:hover {
-    background-color: #219653;
+  background-color: #219653;
 }
-
 .character-list-container {
-    padding: 20px;
+  padding: 20px;
 }
-
 .buttons-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
-
 .show-all-button,
 .favorites-button {
-    width: calc(50% - 5px); /* Adjust button width here */
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+  width: calc(50% - 5px);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+.show-all-button:hover,
+.favorites-button:hover{
+    transform:scale(0.9);
+    
+}
+.favorite-button:hover{
+    color: #000;
 }
 
 .show-all-button {
-    background-color: #3498db;
-    color: #fff;
+  background-color: #3498db;
+  color: #fff;
 }
-
 .favorites-button {
-    background-color: #e74c3c;
-    color: #fff;
+  background-color: #e74c3c;
+  color: #fff;
+}
+.character-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.character-card {
+  width: calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .character-card {
+    width: calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+@media (max-width: 576px) {
+  .character-card {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+  }
+}
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+.info {
+  font-size: 14px;
+}
+.favorite-button {
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.favorite-button.added {
+  background-color: #f44c4c;
+}
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+.character-details-title {
+  background-color: #7eb8f1;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination-button:hover:not(:disabled) {
+}
+.buttons-container {
+  display: flex;
+  height: 100%;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 600px) {
+  .buttons-container {
+    flex-direction: column-reverse;
+  }
+}
+.show-all-button,
+.favorites-button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 100%;
+  background-color: green;
+  color: #fff;
+}
+@media screen and (max-width: 600px) {
+  .show-all-button,
+  .favorites-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    max-width: 150px;
+  }
 }
 
-.character-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: -10px;
-    margin-right: -10px;
+.character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .character-card {
-    width: calc(50% - 20px); /* Adjust width to fit two boxes in one line */
-    max-width: calc(50% - 20px); /* Adjust max-width to fit two boxes in one line */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box; /* Ensure padding and border are included in width calculation */
+  width: 300px; /* Adjust width as needed */
+  margin: 10px; /* Adjust margin as needed */
 }
-
-@media (max-width: 768px) {
-    .character-card {
-        width: calc(50% - 20px); /* Adjust width to fit two boxes in one line */
-        max-width: calc(50% - 20px); /* Adjust max-width to fit two boxes in one line */
-    }
-}
-
-@media (max-width: 576px) {
-    .character-card {
-        width: calc(100% - 20px); /* Adjust width to fit one box in one line */
-        max-width: calc(100% - 20px); /* Adjust max-width to fit one box in one line */
-    }
-}
-
-.name {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.info {
-    font-size: 14px;
-}
-
-.favorite-button {
-    width: 100%;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.favorite-button.added {
-    background-color: #ffcccc;
-}
-
-.pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pagination-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 5px;
-}
-.character-details-title {
-    background-color: rgb(126, 184, 241);
-    text-align: center;
-    border-radius: 8px;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding: 10px;
-  }
-
-.pagination-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pagination-button:hover:not(:disabled) {
-    background-color: #f0f0f0;
-}
-
-
-
-
-
-.buttons-container {
-    display: flex;
-    justify-content: space-between; /* Distribute space evenly between items */
-    height: 100%; /* Ensure container takes full height */
-    margin-bottom: 20px;
-}
-
-/*  */
-
-/* Adjust button size for smaller screens */
-@media screen and (max-width: 600px) {
-    .buttons-container {
-        flex-direction: column-reverse; /* Stack buttons in reverse order on small screens */
-    }
-    
-    .show-all-button,
-    .favorites-button {
-        font-size: 14px;
-        padding: 8px 16px;
-        max-width: 150px; /* Reduce maximum width for smaller screens */
-    }
-}
-
-
-
-
-
-
-.buttons-container {
-    display: flex;
-    /* flex-direction: column; */
-    height: 100%; /* Ensure container takes full height */
-    margin-bottom: 20px;
-}
-
-.show-all-button,
-.favorites-button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    width: 100%; /* Ensure buttons take full width */
-    background-color: green; /* Default background color */
-    color: white; /* Default text color */
-}
-
-/* Adjust button size for smaller screens */
-@media screen and (max-width: 600px) {
-    .buttons-container {
-        flex-direction: column-reverse; /* Stack buttons in reverse order on small screens */
-    }
-    
-    .show-all-button,
-    .favorites-button {
-        font-size: 14px;
-        padding: 8px 16px;
-        max-width: 150px; /* Reduce maximum width for smaller screens */
-    }
-}
-

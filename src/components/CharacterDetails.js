@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Text, Button } from '@chakra-ui/react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
-import './CharacterDetails.css'; // Import the CSS file
+import { Box, Text, Button, Spinner } from '@chakra-ui/react';
+import { useParams, useNavigate } from 'react-router-dom';
+import './CharacterDetails.css';
 
 function CharacterDetails() {
-    const { id } = useParams(); // Use useParams to get the characterId from the URL
+    const { id } = useParams();
     const [character, setCharacter] = useState(null);
     const [homeworld, setHomeworld] = useState(null);
     const [films, setFilms] = useState([]);
     const [species, setSpecies] = useState([]);
     const [vehicles, setVehicles] = useState([]);
     const [starships, setStarships] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,7 +21,6 @@ function CharacterDetails() {
                 const data = await response.json();
                 setCharacter(data);
 
-                // Fetch additional data
                 await Promise.all([
                     fetchAdditionalData(data.homeworld, setHomeworld),
                     fetchAllAdditionalData(data.films, setFilms),
@@ -28,15 +28,17 @@ function CharacterDetails() {
                     fetchAllAdditionalData(data.vehicles, setVehicles),
                     fetchAllAdditionalData(data.starships, setStarships)
                 ]);
+
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching character details:', error);
+                setLoading(false);
             }
         };
 
         fetchCharacterDetails();
-    }, [id]); // Add id to the dependency array to re-fetch data when id changes
+    }, [id]);
 
-    // Function to fetch additional data for a single endpoint
     const fetchAdditionalData = async (url, setData) => {
         try {
             const response = await fetch(url);
@@ -47,7 +49,6 @@ function CharacterDetails() {
         }
     };
 
-    // Function to fetch additional data for multiple endpoints
     const fetchAllAdditionalData = async (urls, setData) => {
         try {
             const responses = await Promise.all(urls.map(url => fetch(url)));
@@ -58,29 +59,38 @@ function CharacterDetails() {
         }
     };
 
-    if (!character) {
-        return <div>Loading...</div>;
+    if (loading) {
+        return (
+            <Box className="main-bg" justifyContent="center" alignItems="center" display="flex" height="100vh">
+                <Spinner size="xl" color="green.500" thickness="4px" />
+            </Box>
+        );
     }
 
     return (
         <>
-            <Box className="character-details-container"> {/* Apply className */}
-                <Text className="character-details-title">Name: {character.name}</Text> {/* Apply className */}
-                <Text className="character-details-item">Height: {character.height}</Text> {/* Apply className */}
-                <Text className="character-details-item">Mass: {character.mass}</Text> {/* Apply className */}
-                <Text className="character-details-item">Hair Color: {character.hair_color}</Text> {/* Apply className */}
-                <Text className="character-details-item">Skin Color: {character.skin_color}</Text> {/* Apply className */}
-                <Text className="character-details-item">Eye Color: {character.eye_color}</Text> {/* Apply className */}
-                <Text className="character-details-item">Birth Year: {character.birth_year}</Text> {/* Apply className */}
-                <Text className="character-details-item">Gender: {character.gender}</Text> {/* Apply className */}
-                <Text className="character-details-item">Homeworld: {homeworld?.name}</Text> {/* Apply className */}
-                <div className='card'>
-                    <Text className="character-details-item">Films: {films.map(film => film.title).join(', ')}</Text> {/* Apply className */}
-                    <Text className="character-details-item">Species: {species.map(specie => specie.name).join(', ')}</Text> {/* Apply className */}
-                    <Text className="character-details-item">Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text> {/* Apply className */}
-                    <Text className="character-details-item">Starships: {starships.map(starship => starship.name).join(', ')}</Text> {/* Apply className */}
-                </div>
-                <Button onClick={() => navigate('/')} mt={4} className='btn'>Go Back</Button>
+            <Box className="main-bg">
+                <Box className="character-details-container">
+                    <Text className="character-details-title">Name: {character.name}</Text>
+                    <div style={{ marginTop: '10px' }}>
+                        <Text className="character-details-item" color="white">Height: {character.height}</Text>
+                        <Text className="character-details-item" color="white">Mass: {character.mass}</Text>
+                        <Text className="character-details-item" color="white">Hair Color: {character.hair_color}</Text>
+                        <Text className="character-details-item" color="white">Skin Color: {character.skin_color}</Text>
+                        <Text className="character-details-item" color="white">Eye Color: {character.eye_color}</Text>
+                        <Text className="character-details-item" color="white">Birth Year: {character.birth_year}</Text>
+                        <Text className="character-details-item" color="white">Gender: {character.gender}</Text>
+                        <Text className="character-details-item" color="white">Homeworld: {homeworld?.name}</Text>
+                    </div>
+
+                    <div className='card'>
+                        <Text className="character-details-item">Films: {films.map(film => film.title).join(', ')}</Text>
+                        <Text className="character-details-item">Species: {species.map(specie => specie.name).join(', ')}</Text>
+                        <Text className="character-details-item">Vehicles: {vehicles.map(vehicle => vehicle.name).join(', ')}</Text>
+                        <Text className="character-details-item">Starships: {starships.map(starship => starship.name).join(', ')}</Text>
+                    </div>
+                    <Button onClick={() => navigate('/')} mt={4} className='btn' colorScheme="green">Go Back</Button>
+                </Box>
             </Box>
         </>
     );
