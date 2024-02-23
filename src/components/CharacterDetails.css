@@ -1,5 +1,5 @@
 .main-bg {
-  background-image: url("./mainBg.avif");
+  background-image: url("../../public/bg.gif");
   background-size: cover;
   background-position: center;
   height: 100vh; /* Ensure the background covers the entire viewport height */
@@ -60,6 +60,6 @@
 
 /* Background image */
 .character-details-container {
-  background-image: url("../../public/bg.jpeg");
-  background-size: cover;
+  background-image: url("../../public/1.png ");
+  background-size: auto;
 }
