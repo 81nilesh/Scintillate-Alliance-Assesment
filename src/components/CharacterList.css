@@ -285,6 +285,10 @@
   justify-content: center;
   width: 100%;
 }
+.character-container .character-card:hover {
+  transform: scale(1.1);
+  box-shadow: inset 0 0 8px 1px rgb(234, 177, 177);
+}
 
 .character-card {
   width: 300px; /* Adjust width as needed */
